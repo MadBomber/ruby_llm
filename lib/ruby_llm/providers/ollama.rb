@@ -2,9 +2,6 @@
 
 module RubyLLM
   module Providers
-    # OpenAI API integration. Handles chat completion, function calling,
-    # and OpenAI's unique streaming format. Supports GPT-4, GPT-3.5,
-    # and other OpenAI models.
     module Ollama
       extend Providers::OpenAI
 
@@ -22,15 +19,11 @@ module RubyLLM
       module_function
 
       def api_base
-        ENV.fetch('OLLAMA_HOST', 'http://localhost:11434')
+        ENV.fetch('OLLAMA_API_BASE', 'http://localhost:11434/v1') # SMELL: v1/api ???
       end
 
       def headers
         {}
-      end
-
-      def capabilities
-        OpenAI::Capabilities
       end
 
       def slug
@@ -43,3 +36,5 @@ module RubyLLM
     end
   end
 end
+
+__END__
