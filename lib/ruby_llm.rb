@@ -30,6 +30,10 @@ module RubyLLM
   class Error < StandardError; end
 
   class << self
+    def new(model = nil, provider: nil)
+      Chat.new(model:, provider:)
+    end
+
     def chat(model: nil, provider: nil)
       Chat.new(model: model, provider: provider)
     end
